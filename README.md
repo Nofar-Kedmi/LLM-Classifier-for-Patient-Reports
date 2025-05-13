@@ -1,9 +1,13 @@
-# Patient Free-Text LLM Classifier
-For this project, we used ChatGPT to generate synthetic patient symptom descriptions.                                       
-The dataset includes a diverse range of symptoms, from critical conditions to common issues.   
-Each record contains a unique patient ID along with demographic details (age, gender, marital status). 
+# LangTriage
 
-## Main objectives
-* Text classification: Assign urgency labels to medical texts
-* Named Entity Recognition (NER): Identify key symptoms, diagnoses, and risk factors
-* Performance evaluation using precision, accuracy, recall, F1
+LangTriage is an NLP-based classification project that determines the urgency level of patients based on case descriptions generated from their clinical measurements. 
+
+The goal is to analyze structured clinical data, transform it into natural language descriptions, and accurately and rapidly classify each case's urgency level (e.g., urgent – requiring immediate medical intervention, or non-urgent – can wait or be monitored). 
+This process aims to Support faster and more consistent triage decisions. 
+
+
+
+## NLP Tasks: 
+* Text classification – Assign urgency labels to medical texts
+* Data to Text Generation – from structured clinical data to symptom descriptions
+
