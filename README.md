@@ -94,8 +94,10 @@ Recall was relatively low. Future work can explore threshold tuning or smarter s
 ## **Why LLMs?**  
 The use of Large Language Models like DistilBERT and T5 allows for nuanced understanding of patient narratives and enables both discriminative (classification) and generative (symptom description) capabilities. These models bring state-of-the-art NLP to the medical triage context, offering scalability and adaptability beyond rule-based or classical ML approaches.
 
-## Visual Abstract
-[Projext Visual Abstract](Visual Abstract.png)
+## Visual Abstract:
+![Project Visual Abstract](Visual%20Abstract.png)
+
+
 
 
 
