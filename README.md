@@ -7,14 +7,23 @@ The goal is to quickly and accurately **classify** the case descriptions of pati
 Thereby, improve the decision-making process of the medical team regarding triage and ensure that urgent cases are treated first.
 
 
-## Project Overview
+##
+| 🧑‍🔬 Team Members                 |
+|----------------------------|
+| Nofar Kedmi            |
+| Diana akoshvili        |
 
-### NLP Tasks: 
+---
+
+# **🎯 Project Overview**
+
+### 📋 NLP Tasks: 
 * Text classification – Using LLMs to assign urgency labels to patient symptom descriptions.
 * Data to Text Generation – from structured clinical data to symptom descriptions.
 
+---
 
-## Dataset Description:
+## 🔍 Dataset Description:
 Source: Patient Priority Classification Dataset (Kaggle) https://www.kaggle.com/datasets/hossamahmedaly/patient-priority-classification
 
 ### **Data files:** 
@@ -22,66 +31,64 @@ Source: Patient Priority Classification Dataset (Kaggle) https://www.kaggle.com/
 * df_clean_original - Cleaned version with mapped binary labels 
 * df_clean_with_text - Final dataset including structured input and free-text complaint
 
-Code Notebooks:
+### **Code Notebooks:**
 * EDA: NLP_Project_EDA.ipynb
 * Free-Text Generation: Generate_free_text_complaints.ipynb
 * Training: Train_and_Evaluate_models.ipynb
 * Model Comparison: Comparison_of_Model_Performance.ipynb
 
-## Methodology & Modeling  Pipeline:
-**1. EDA & Data Cleansing:**
+---
 
-Exploratory Data Analysis (EDA) performed to understand class distribution, missing values, and feature behavior.
+## 🔬 Methodology & Modeling  Pipeline:
+### 1️⃣ EDA & Data Cleansing:
+Exploratory Data Analysis (EDA) performed to understand class distribution, missing values, and feature behavior.  
 Invalid entries and incomplete rows were removed.
 
-**2. Mapping Urgency Levels to Binary Labels:**
+### 2️⃣ Mapping Urgency Levels to Binary Labels:
+Original triage labels were mapped to a binary classification task:  
+- `0` — Not Urgent: Can wait or be monitored  
+- `1` — Urgent: Requires immediate medical attention
 
-Original triage labels were mapped to a binary classification task:
+### 3️⃣ Data Generation:
+Structured prompt was designed for the GPT-4 model to generate natural, first-person, free-text descriptions  
+without medical terms, simulating how a patient might describe symptoms upon ER arrival.  
 
-0 — Not Urgent: Can wait or be monitored
+📌 *Example prompt*:  
+*"You are a patient arriving to the ER. Describe how you feel..."*
 
-1 — Urgent: Requires immediate medical attention
+### 4️⃣ Vectorization & Modeling:
 
-  
-**3. Data Generation:**
-Structured Prompt was designed for the GPT-4 model to generate natural , first-person, free-text descriptions without medical terms, simulating how a patient might describe their symptoms upon arrival at the emergency room. These were based on the patient’s clinical measurements.
-Example prompt:
-"You are a patient arriving to the ER. Describe how you feel..."
+**Models tested**:
+- **📊 TF-IDF + Logistic Regression** – Classical baseline, fast and interpretable  
+- **🤖 DistilBERT (Fine-tuned Transformer)** – Context-aware, high balanced performance  
+- **🧠 T5 (Fine-tuned Generative Transformer)** – Text-to-text flexible structure, slightly less consistent  
 
-**4. Vectorization & Modeling:**
+**Text Preprocessing included**:
+- Lowercasing, Stopword removal  
+- Tokenization & truncation per model  
+- SMOTE for class balancing  
 
-Models tested:
-
-**TF-IDF + Logistic Regression**
-Baseline model using classical feature extraction (TF-IDF) and a simple linear classifier. Fast and interpretable, but limited in handling semantic meaning.
-
-**DistilBERT (Fine-tuned Transformer)**
-Lightweight version of BERT, fine-tuned on the classification task. Captures contextual understanding and showed strong, balanced performance.
-
-**T5 (Fine-tuned Generative Transformer)**
-A text-to-text generative model (FLAN-T5), trained to output the urgency class based on free-text input. Allows flexible input-output structure, but less consistent in classification accuracy compared to DistilBERT.
-
-* Text preprocessing included: Lowercasing, Stopword removal, Tokenization & truncation per model, SMOTE for class balancing
-
-Data splitting:
-Dividing into 80% training and 20% testing.
+**Data Splitting**: 80% training / 20% testing
 
 
-**5. Evaluation**
-Models were evaluated on the test set using:
-* Accuracy, Precision, Recall, F1-Score
-* AUROC
-* Confusion Matrix & Comparison Charts
+### 5️⃣ Evaluation:
+Models were evaluated using:
+- Accuracy, Precision, Recall, F1-Score  
+- AUROC  
+- Confusion Matrix & Comparison Charts  
 
+---
 
-## Results: 
+## 📈 Results: 
 * DistilBERT showed the most balanced and highest performance 
 
 * TF-IDF + LR had strong recall, making it highly sensitive to urgent cases
 
 * T5 achieved good accuracy, but was less consistent across F1 and recall
 
-## Conclusions & Recommendations:
+---
+
+## 🧩 Conclusions & Recommendations:
 
 **Improving Recall in transformer models:**
 Recall was relatively low. Future work can explore threshold tuning or smarter sampling to improve urgent case detection.
@@ -90,11 +97,14 @@ Recall was relatively low. Future work can explore threshold tuning or smarter s
 
 **Real-world clinical validation:** Test the model in actual ER settings and gather staff feedback on its usefulness in triage decisions.
 
+---
 
-## **Why LLMs?**  
+## 💡 **Why LLMs?**  
 The use of Large Language Models like DistilBERT and T5 allows for nuanced understanding of patient narratives and enables both discriminative (classification) and generative (symptom description) capabilities. These models bring state-of-the-art NLP to the medical triage context, offering scalability and adaptability beyond rule-based or classical ML approaches.
 
-## Visual Abstract:
+---
+
+## 🖼️ Visual Abstract:
 ![Project Visual Abstract](Visual%20Abstract.png)
 
 
