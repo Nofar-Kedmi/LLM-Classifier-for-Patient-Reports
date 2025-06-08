@@ -23,6 +23,12 @@ Thereby, improve the decision-making process of the medical team regarding triag
 
 ---
 
+## Task Specification
+* Input: Natural text generated from structured clinical measurements.
+* Output: Classification labels indicating urgency level (0 or 1).
+* Metrics: Classification Accuracy, F1-Score, Recall, Precision.
+---
+
 ## 🔍 Dataset Description:
 Source: Patient Priority Classification Dataset (Kaggle) https://www.kaggle.com/datasets/hossamahmedaly/patient-priority-classification
 
@@ -79,7 +85,18 @@ Models were evaluated using:
 
 ---
 
-## 📈 Results: 
+## **📈 Results:**  
+
+Model Performance Comparison:
+
+| **Metric/Model** | **TF-IDF + LR** | **DistilBERT** | **T5**   |
+|------------------|------------------|----------------|----------|
+| **Accuracy**     | 0.8101           | 0.9641         | 0.9314   |
+| **F1-Score**     | 0.6530           | 0.8262         | 0.5494   |
+| **Recall**       | 0.8734           | 0.5939         | 0.5360   |
+| **Precision**    | 0.9999           | 0.9999         | 0.7778   |
+
+
 * DistilBERT showed the most balanced and highest performance 
 
 * TF-IDF + LR had strong recall, making it highly sensitive to urgent cases
